@@ -1,2 +1,1 @@
-service start php-fpm
-php-fpm7.4 -F &
+service php7.4-fpm start

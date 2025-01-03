@@ -1,4 +1,5 @@
 service mariadb start
+
 mysql -u root --password=${PASSWORD_ROOT}<<EOF
 CREATE DATABASE ${NAME_DATABASE};
 CREATE USER '${NAME_USER}'@'localhost' IDENTIFIED BY '${USER_PASSWORD}';
