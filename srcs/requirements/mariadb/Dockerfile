@@ -1,4 +1,4 @@
-FROM debian:12.8
+FROM debian:11.11
 
 RUN apt update && apt upgrade && apt install vim  mariadb-server -y
 COPY  ./tools/db.sh /usr/bin/

@@ -1,0 +1,50 @@
+services:
+  nginx:
+    build:
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/nginx
+    container_name: nginx
+    ports:
+      - "443:443"
+    env_file:
+      - .env
+    volumes:
+      - WordPress:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - my_network
+
+  wordpress:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/wordpress
+    container_name: wordpress
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env
+    volumes:
+      - WordPress:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - my_network
+
+  mariadb:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - DB:/var/lib/mysql
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+volumes:
+  DB:
+  WordPress:

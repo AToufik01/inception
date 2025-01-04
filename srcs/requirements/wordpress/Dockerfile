@@ -11,4 +11,5 @@ RUN unzip latest.zip && rm latest.zip
 RUN mkdir -p /var/www/wordpress && mv wordpress /var/www/
 RUN chown -R www-data:www-data /var/www/wordpress &&  chmod -R 755 /var/www/wordpress
 COPY ./conf/my-config-wp.php /var/www/wordpress/my-config-wp.php
+EXPOSE 9000
 # CMD ["/usr/bin/start.sh"]
