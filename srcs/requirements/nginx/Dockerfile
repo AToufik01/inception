@@ -8,4 +8,4 @@ RUN openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/nginx/ssl/my_key.key 
 
 EXPOSE 443
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
