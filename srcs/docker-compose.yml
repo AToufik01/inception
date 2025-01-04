@@ -4,13 +4,14 @@ services:
       context: /home/ataoufik/Desktop/inception/srcs/requirements/nginx
     container_name: nginx
     ports:
-      - "443:443"
+      - "80:80"
     env_file:
       - .env
     volumes:
-      - WordPress:/var/www/html
+      - WordPress:/var/www/wordpress
     depends_on:
       - wordpress
+      - mariadb
     networks:
       - my_network
 
@@ -23,9 +24,9 @@ services:
     env_file:
       - .env
     volumes:
-      - WordPress:/var/www/html
-    depends_on:
-      - mariadb
+      - WordPress:/var/www/wordpress
+    # depends_on:
+    #   - mariadb
     networks:
       - my_network
 
@@ -44,7 +45,7 @@ services:
 
 networks:
   my_network:
-
+    driver: bridge
 volumes:
   DB:
   WordPress:
