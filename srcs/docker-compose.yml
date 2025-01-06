@@ -21,12 +21,17 @@ services:
     container_name: wordpress
     ports:
       - "9000:9000"
+    environment:
+      - NAME_DATABASE=dwordpress
+      - NAME_USER=ayoub
+      - USER_PASSWORD=taoufik
+      - DB_HOST=mariadb
     env_file:
       - .env
     volumes:
       - WordPress:/var/www/wordpress
-    # depends_on:
-    #   - mariadb
+    depends_on:
+      - mariadb
     networks:
       - my_network
 

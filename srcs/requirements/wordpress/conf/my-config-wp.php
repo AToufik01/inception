@@ -1,29 +1,36 @@
 <?php
 
-define( 'DB_NAME', getenv('NAME_DATABASE'));
+// Ensure environment variables are set
+if (!getenv('USER_PASSWORD'))
+        die('2');
+else if (!getenv('NAME_USER'))
+        die('3');
+else if (!getenv('DB_HOST'))
+        die('4');
+else if (!getenv('NAME_DATABASE'))
+        die('hhh');
 
-/** Database username */
-define( 'DB_USER', getenv('NAME_USER') );
 
-/** Database password */
-define( 'DB_PASSWORD', getenv('USER_PASSWORD') );
+// Define database constants
+define('DB_NAME', getenv('NAME_DATABASE'));
+define('DB_USER', getenv('NAME_USER'));
+define('DB_PASSWORD', getenv('USER_PASSWORD'));
+define('DB_HOST', getenv('DB_HOST'));
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
 
-/** Database hostname */
-define( 'DB_HOST', getenv('DB_HOST'));
-
-/** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
-
-/** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
-
+// Define table prefix
 $table_prefix = 'wp_';
-define( 'WP_DEBUG', false );
 
-/** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-        define( 'ABSPATH', __DIR__ . '/' );
+// Ensure ABSPATH is defined
+if (!defined('ABSPATH')) {
+    die('ABSPATH is not defined.');
 }
 
-/** Sets up WordPress vars and included files. */
+// Enable WordPress debugging
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
+
+// Include WordPress settings
 require_once ABSPATH . 'wp-settings.php';

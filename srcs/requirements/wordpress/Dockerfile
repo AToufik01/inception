@@ -9,9 +9,8 @@ COPY  ./tools/start.sh /usr/bin/
 RUN chmod +x /usr/bin/start.sh
 RUN unzip latest.zip && rm latest.zip
 RUN mkdir -p /var/www/wordpress && mv wordpress /var/www/
+
 RUN chown -R www-data:www-data /var/www/wordpress &&  chmod -R 755 /var/www/wordpress
-# COPY ./tools/index.php /var/www/html/
-COPY ./conf/my-config-wp.php /var/www/wordpress/my-config-wp.php
+WORKDIR /var/www/wordpress
 EXPOSE 9000
 CMD ["start.sh"]
-# CMD service php7.4-fpm start && tail -f /dev/null
