@@ -6,5 +6,4 @@ COPY ./conf/my_config.cnf /etc/mysql/
 
 RUN chmod +x /usr/bin/db.sh
 RUN echo "!include /etc/mysql/my_config.cnf" >> /etc/mysql/my.cnf
-# RUN db.sh
 CMD ["db.sh"]
