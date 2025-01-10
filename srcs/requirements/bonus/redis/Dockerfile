@@ -1,0 +1,6 @@
+FROM debian:11.11
+
+RUN apt update && apt upgrade -y && apt install redis-server php-redis  -y
+COPY ./conf/redis.conf /etc/redis/redis.conf
+EXPOSE 6379
+CMD ["redis-server", "/etc/redis/redis.conf"]

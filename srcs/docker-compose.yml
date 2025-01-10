@@ -12,6 +12,7 @@ services:
     depends_on:
       - wordpress
       - mariadb
+    restart: on-failure
     networks:
       - my_network
 
@@ -27,6 +28,8 @@ services:
       - WordPress:/var/www/wordpress
     depends_on:
       - mariadb
+      - redis
+    restart: on-failure
     networks:
       - my_network
 
@@ -38,11 +41,20 @@ services:
       - "3306:3306"
     env_file:
       - .env
+    restart: on-failure
     volumes:
       - DB:/var/lib/mysql
     networks:
       - my_network
-
+  redis:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/redis
+    container_name: redis
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    networks:
+      - my_network
 networks:
   my_network:
     driver: bridge
