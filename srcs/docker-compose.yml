@@ -32,7 +32,41 @@ services:
     restart: on-failure
     networks:
       - my_network
-
+  redis:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/redis
+    container_name: redis
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    networks:
+      - my_network
+  adminer:
+    build:
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/adminer
+    container_name: adminer
+    depends_on:
+      - mariadb 
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+  ftp:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/ftp
+    container_name: ftp
+    restart: on-failure
+    ports:
+      - "21:21"
+    env_file:
+      - .env
+    depends_on:
+      - wordpress
+      - mariadb
+    networks:
+      - my_network
+    volumes:
+      - WordPress:/var/www/wordpress
   mariadb:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
@@ -44,15 +78,6 @@ services:
     restart: on-failure
     volumes:
       - DB:/var/lib/mysql
-    networks:
-      - my_network
-  redis:
-    build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/redis
-    container_name: redis
-    restart: on-failure
-    ports:
-      - "6379:6379"
     networks:
       - my_network
 networks:
