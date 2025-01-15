@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Docker, Inception, Nginx, MariaDB, WordPress, and more.">
+    <title>inception</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>inception </h1>
+        <nav>
+            <ul>
+                <li><a href="#docker ">docker</a></li>
+                <li><a href="#nginx">Nginx</a></li>
+                <li><a href="#mariadb">MariaDB</a></li>
+                <li><a href="#wordpress">WordPress</a></li>
+                <li><a href="#bonus">Bonus Technologies</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="docker">
+        <h2 style="color: #007BFF">Docker</h2>
+        <img src="docker.png" alt="Docker Logo" class="docker-image">
+        <p>The Inception project at 42 is an essential part of learning DevOps and Docker. It involves creating a full-stack application with Docker and various services like Nginx, MariaDB, WordPress, and others. This project teaches how to set up a multi-container Docker environment with the use of Docker Compose and integrates tools like FTP, Redis, and Portainer for container management.</p>
+    </section>
+
+    <section id="nginx">
+        <h2 style="color: #028500">Nginx</h2>
+        <p>Nginx is a powerful web server and reverse proxy server used to handle HTTP and HTTPS requests. In the Docker environment, Nginx can be used to manage traffic, act as a load balancer, and serve static files efficiently. It is often used as a reverse proxy for applications like WordPress, improving performance and security.</p>
+    </section>
+
+    <section id="mariadb">
+        <h2>MariaDB</h2>
+        <p>MariaDB is a popular open-source relational database management system, a fork of MySQL. It is widely used in web applications to store data. In a Docker environment, MariaDB is typically run in a container, providing a flexible and scalable database solution for applications like WordPress.</p>
+    </section>
+
+    <section id="wordpress">
+        <h2>WordPress</h2>
+        <p>WordPress is a popular content management system (CMS) used for creating websites and blogs. When using Docker, WordPress can be run in a container along with its database (MariaDB) for easy deployment and management. This combination makes it simple to set up and manage a WordPress site in a controlled environment.</p>
+    </section>
+
+    <section id="bonus">
+        <h2>Bonus Technologies</h2>
+        <h3>FTP Server</h3>
+        <p>An FTP server allows you to transfer files to and from a server using the FTP protocol. In Docker, an FTP server can be set up to manage files within a containerized environment. It’s often used in conjunction with web servers for easy file access and management.</p>
+
+        <h3>Redis</h3>
+        <p>Redis is an in-memory data structure store used as a database, cache, and message broker. It is commonly used for caching to improve application performance. Docker containers running Redis can be easily integrated with web applications to enhance speed and scalability.</p>
+        
+        <h3>Adminer</h3>
+        <p>Adminer is a database management tool similar to phpMyAdmin. It provides a simple interface for managing databases. In Docker, Adminer can be run as a container to manage databases like MariaDB and MySQL without needing to install additional software on your host machine.</p>
+        
+        <h3>Portainer</h3>
+        <p>Portainer is a lightweight management UI for Docker. It provides an easy-to-use web interface to manage containers, images, networks, and volumes. Portainer is ideal for users who prefer visual management of Docker environments rather than working with the command line.</p>
+
+    </section>
+
+    <footer>
+        <p>Learn more about Docker and related technologies on <a href="https://www.docker.com/">Docker's official website</a>.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

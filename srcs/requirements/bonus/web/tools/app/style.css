@@ -1,0 +1,111 @@
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-50px); /* Initially off-screen */
+    animation: slideIn 1s forwards; /* Apply animation */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    animation: fadeIn 2s ease-in-out 0.5s forwards; /* Header fade-in effect */
+}
+
+header nav {
+    opacity: 0;
+    transform: translateY(-30px); /* Initially hidden */
+    animation: slideInNav 1s forwards 1s; /* Apply delay for nav */
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move to original position */
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInNav {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move nav into view */
+    }
+}
+
+
+section {
+    padding: 2rem;
+    margin: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.docker-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 8rem;
+}
