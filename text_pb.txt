@@ -12,4 +12,8 @@ echo madvise > /sys/kernel/mm/transparent_hugepage/enabled
 
 echo "echo madvise > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
 
-sysctl vm.overcommit_memory=1
+sysctl vm.overcommit_memory=1 
+
+
+curl -L https://github.com/portainer/portainer/releases/download/2.25.1/portainer-2.25.1-linux-amd64.tar.gz -o portainer-2.25.1-linux-amd64.tar.gz
+tar -xvzf portainer-2.25.1-linux-amd64.tar.gz

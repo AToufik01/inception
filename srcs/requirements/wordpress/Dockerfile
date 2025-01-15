@@ -11,7 +11,7 @@ RUN apt install redis-tools -y
 RUN curl -O https://wordpress.org/latest.zip
 COPY  ./tools/start.sh /usr/bin/
 RUN chmod +x /usr/bin/start.sh
-RUN unzip latest.zip && rm latest.zip
+RUN unzip latest.zip && rm latest.zip 
 RUN mkdir -p /var/www/wordpress && mv wordpress /var/www/
 
 RUN chown -R www-data:www-data /var/www/wordpress &&  chmod -R 755 /var/www/wordpress

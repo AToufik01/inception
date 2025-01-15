@@ -4,7 +4,7 @@ services:
       context: /home/ataoufik/Desktop/inception/srcs/requirements/nginx
     container_name: nginx
     ports:
-      - "80:80"
+      - "443:443"
     env_file:
       - .env
     volumes:
@@ -51,11 +51,23 @@ services:
       - "8080:8080"
     networks:
       - my_network
+  portainer:
+    build:
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/portainer
+    container_name: portainer
+    env_file:
+      - .env
+    ports:
+      - "9443:9443"
+    networks:
+      - my_network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   ftp:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/ftp
     container_name: ftp
-    restart: on-failure
+    # restart: on-failure
     ports:
       - "21:21"
     env_file:
@@ -66,7 +78,7 @@ services:
     networks:
       - my_network
     volumes:
-      - WordPress:/var/www/wordpress
+      - WordPress:${DIR_FTP}
   mariadb:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
