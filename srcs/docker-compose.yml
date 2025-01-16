@@ -9,19 +9,17 @@ services:
       - .env
     volumes:
       - WordPress:/var/www/wordpress
+      - staticwb:/var/www/html/app
     depends_on:
       - wordpress
       - mariadb
     restart: on-failure
     networks:
       - my_network
-
   wordpress:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/wordpress
     container_name: wordpress
-    ports:
-      - "9000:9000"
     env_file:
       - .env
     volumes:
@@ -69,6 +67,7 @@ services:
     container_name: ftp
     ports:
       - "21:21"
+      - "40000-40100:40000-40100"
     env_file:
       - .env
     depends_on:
@@ -78,12 +77,18 @@ services:
       - my_network
     volumes:
       - WordPress:${DIR_FTP}
+  static_website:
+    build: 
+      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/web
+    container_name: static_website
+    networks:
+      - my_network
+    volumes:
+      - staticwb:/var/www/html/app
   mariadb:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
     container_name: mariadb
-    ports:
-      - "3306:3306"
     env_file:
       - .env
     restart: on-failure
@@ -97,3 +102,4 @@ networks:
 volumes:
   DB:
   WordPress:
+  staticwb:

@@ -9,7 +9,6 @@ redis      | 1:M 10 Jan 2025 16:29:25.994 # WARNING overcommit_memory is set to 
 
 
 echo madvise > /sys/kernel/mm/transparent_hugepage/enabled
-
 echo "echo madvise > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
 
 sysctl vm.overcommit_memory=1 

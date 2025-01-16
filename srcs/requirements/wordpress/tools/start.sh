@@ -7,20 +7,13 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 wp config create --dbname=${NAME_DATABASE} --dbuser=${NAME_USER} --dbpass=${USER_PASSWORD} --dbhost=${DB_HOST} --allow-root
 wp core install --url=${URL} --title=${TITLE} --admin_user=${ADMINUSER} --admin_password=${ADMINPASSWORD} --admin_email=${EMAILUSR} --allow-root
+# wp core install --url=${URL} --title=${TITLE} --admin_user=${ADMINUSER} --admin_password=${ADMINPASSWORD} --admin_email=${EMAILUSR} --allow-root
 
 wp plugin install redis-cache --activate --allow-root
-
-
-
 wp config set WP_REDIS_PORT 6379 --allow-root
 wp config set WP_REDIS_HOST redis --allow-root
 wp redis enable --allow-root
-
-# wp config set WP_CACHE true --type=constant --raw --allow-root
-# wp config set WP_REDIS_PORT 6379 --type=constant --raw --allow-root
-# wp config set WP_CACHE_KEY_SALT redis --type=constant --allow-root
+chown -R www-data:www-data /var/www/wordpress
+chmod -R 777 /var/www/wordpress
 
 php-fpm7.4 -F
-
-
-
