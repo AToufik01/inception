@@ -25,7 +25,6 @@ services:
       - WordPress:/var/www/wordpress
     depends_on:
       - mariadb
-      - redis
     restart: on-failure
     networks:
       - my_network
@@ -36,6 +35,9 @@ services:
     restart: on-failure
     ports:
       - "6379:6379"
+    depends_on:
+      - wordpress
+      - mariadb
     networks:
       - my_network
   adminer:
@@ -71,7 +73,6 @@ services:
       - .env
     depends_on:
       - wordpress
-      - mariadb
     networks:
       - my_network
     volumes:
