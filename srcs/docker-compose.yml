@@ -9,7 +9,6 @@ services:
       - .env
     volumes:
       - WordPress:/var/www/wordpress
-      - staticwb:/var/www/html/app
     depends_on:
       - wordpress
       - mariadb
@@ -77,14 +76,14 @@ services:
       - my_network
     volumes:
       - WordPress:${DIR_FTP}
-  static_website:
+  web:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/web
-    container_name: static_website
+    container_name: web
+    ports:
+      - "80:80"
     networks:
       - my_network
-    volumes:
-      - staticwb:/var/www/html/app
   mariadb:
     build: 
       context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
@@ -101,5 +100,14 @@ networks:
     driver: bridge
 volumes:
   DB:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ataoufik/data/db
   WordPress:
-  staticwb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ataoufik/data/wordpress
