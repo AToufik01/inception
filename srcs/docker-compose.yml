@@ -1,23 +1,22 @@
 services:
   nginx:
     build:
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/nginx
+      context: ./requirements/nginx
     container_name: nginx
     ports:
       - "443:443"
     env_file:
       - .env
-    volumes:
-      - WordPress:/var/www/wordpress
     depends_on:
       - wordpress
-      - mariadb
-    restart: on-failure
+    volumes:
+      - WordPress:/var/www/wordpress
+    restart: always
     networks:
       - my_network
   wordpress:
     build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/wordpress
+      context: ./requirements/wordpress
     container_name: wordpress
     env_file:
       - .env
@@ -25,14 +24,25 @@ services:
       - WordPress:/var/www/wordpress
     depends_on:
       - mariadb
-    restart: on-failure
+    restart: always
+    networks:
+      - my_network
+  mariadb:
+    build: 
+      context: ./requirements/mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - DB:/var/lib/mysql
     networks:
       - my_network
   redis:
     build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/redis
+      context: ./requirements/bonus/redis
     container_name: redis
-    restart: on-failure
+    restart: always
     ports:
       - "6379:6379"
     depends_on:
@@ -42,17 +52,15 @@ services:
       - my_network
   adminer:
     build:
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/adminer
+      context: ./requirements/bonus/adminer
     container_name: adminer
-    depends_on:
-      - mariadb 
     ports:
       - "8080:8080"
     networks:
       - my_network
   portainer:
     build:
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/portainer
+      context: ./requirements/bonus/portainer
     container_name: portainer
     env_file:
       - .env
@@ -64,36 +72,23 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   ftp:
     build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/ftp
+      context: ./requirements/bonus/ftp
     container_name: ftp
     ports:
       - "21:21"
       - "40000-40100:40000-40100"
     env_file:
       - .env
-    depends_on:
-      - wordpress
     networks:
       - my_network
     volumes:
       - WordPress:${DIR_FTP}
   web:
     build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/bonus/web
+      context: ./requirements/bonus/web
     container_name: web
     ports:
       - "80:80"
-    networks:
-      - my_network
-  mariadb:
-    build: 
-      context: /home/ataoufik/Desktop/inception/srcs/requirements/mariadb
-    container_name: mariadb
-    env_file:
-      - .env
-    restart: on-failure
-    volumes:
-      - DB:/var/lib/mysql
     networks:
       - my_network
 networks:

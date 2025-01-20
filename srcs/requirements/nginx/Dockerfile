@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update && apt upgrade && apt install nginx openssl curl -y
+RUN apt update && apt upgrade && apt install nginx openssl -y
 
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 

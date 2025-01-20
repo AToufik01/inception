@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update && apt upgrade -y && apt install redis-server php-cli php-redis php-fpm -y
+RUN apt update && apt upgrade -y && apt install redis-server php-redis php-fpm -y
 
 COPY ./conf/redis.conf /etc/redis/redis.conf
 

@@ -1,20 +1,12 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y curl zip unzip
+RUN apt update && apt upgrade && apt install -y curl php7.4-fpm php7.4-mysql
 
-RUN apt update && apt install -y php7.4-fpm php7.4-mysql
-
-RUN curl -O https://wordpress.org/latest.zip
+WORKDIR /var/www/wordpress
 
 COPY  ./tools/start.sh /usr/bin/
 
 RUN chmod +x /usr/bin/start.sh
-
-RUN unzip latest.zip && rm latest.zip 
-
-RUN mkdir -p /var/www/wordpress && mv wordpress /var/www/
-
-WORKDIR /var/www/wordpress
 
 EXPOSE 9000
 

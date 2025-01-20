@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update && apt upgrade && apt install vim  mariadb-server -y
+RUN apt update && apt upgrade && apt install mariadb-server -y
 
 COPY  ./tools/db.sh /usr/bin/
 
