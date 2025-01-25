@@ -3,6 +3,7 @@ services:
     build:
       context: ./requirements/nginx
     container_name: nginx
+    image: nginx:v1.0.0
     ports:
       - "443:443"
     env_file:
@@ -18,6 +19,7 @@ services:
     build: 
       context: ./requirements/wordpress
     container_name: wordpress
+    image: wordpress:v1.0.0
     env_file:
       - .env
     volumes:
@@ -31,6 +33,7 @@ services:
     build: 
       context: ./requirements/mariadb
     container_name: mariadb
+    image: mariadb:v1.0.0
     env_file:
       - .env
     restart: always
@@ -42,6 +45,7 @@ services:
     build: 
       context: ./requirements/bonus/redis
     container_name: redis
+    image: redis:v1.0.0
     restart: always
     ports:
       - "6379:6379"
@@ -54,6 +58,8 @@ services:
     build:
       context: ./requirements/bonus/adminer
     container_name: adminer
+    image: adminer:v1.0.0
+    restart: always
     ports:
       - "8080:8080"
     networks:
@@ -62,6 +68,8 @@ services:
     build:
       context: ./requirements/bonus/portainer
     container_name: portainer
+    image: portainer:v1.0.0
+    restart: always
     env_file:
       - .env
     ports:
@@ -74,6 +82,8 @@ services:
     build: 
       context: ./requirements/bonus/ftp
     container_name: ftp
+    restart: always
+    image: ftp:v1.0.0
     ports:
       - "21:21"
       - "40000-40100:40000-40100"
@@ -87,6 +97,8 @@ services:
     build: 
       context: ./requirements/bonus/web
     container_name: web
+    image: web:v1.0.0
+    restart: always
     ports:
       - "80:80"
     networks:

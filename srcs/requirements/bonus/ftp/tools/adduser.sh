@@ -9,11 +9,9 @@ sed -i 's|listen=NO|listen=YES|' /etc/vsftpd.conf
 sed -i 's|listen_ipv6=YES|listen_ipv6=NO|' /etc/vsftpd.conf
 
 echo "write_enable=YES
-# background=NO
 pasv_enable=YES
 pasv_min_port=40000
 pasv_max_port=40100
-pasv_address=10.12.100.132
 ">> /etc/vsftpd.conf
 
 vsftpd /etc/vsftpd.conf
